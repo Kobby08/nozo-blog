@@ -23,18 +23,26 @@ const Home = () => {
     },
   ]);
 
+  const [name, setName] = useState("mario");
+
   const handleDelete = (id) => {
     const newBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(newBlogs);
   };
 
+  // we can allow useEffect to listen to changes in dependencies before it run.
+  // useEffect will not run until a dependenciy changes.
+  // dependencies are passed as array to the useEffect hook.
   useEffect(() => {
     console.log("Hello world!");
-  });
+    console.log(name);
+  }, [name]);
 
   return (
     <div className="home">
       <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
+      <button onClick={() => setName("luigi")}>change name</button>
+      <p>{name}</p>
     </div>
   );
 };
