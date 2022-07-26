@@ -22,9 +22,14 @@ const Home = () => {
       id: 3,
     },
   ]);
+
   return (
     <div className="home">
-      <BlogList blogs={blogs} />
+      <BlogList blogs={blogs} title="All Blogs" />
+      <BlogList
+        blogs={blogs.filter((blog) => blog.author === "mario")}
+        title="Mario's Blogs"
+      />
     </div>
   );
 };
